@@ -25,7 +25,7 @@ const OrdenDeCompra = () => {
         addDoc(ordenesCollection, formData)
 
 
-        navigate("/gracias"); // TODO AGREGAR LA RESPUES DE ORDEN OK
+        navigate("/ordenCreada"); // TODO AGREGAR LA RESPUES DE ORDEN OK
     };
 
     return (

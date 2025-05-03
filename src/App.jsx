@@ -21,7 +21,8 @@ function App() {
           <Route path="/detalle/:id" element={<ItemDetail />} />
           <Route path="/carrito" element={<ResumenCarrito />} />
           <Route path="/formularioOrden" element={<OrdenDeCompra />} />
-          <Route path="*" element={<p> 404 Not found </p>} />
+          <Route path="/ordenCreada" element={<img src='https://res.cloudinary.com/dufkpsvbz/image/upload/v1746295867/Orden_creada_wi3bxs.jpg'></img>} />
+          <Route path="*" element={<img src='https://res.cloudinary.com/dufkpsvbz/image/upload/v1746295526/Error_404_x69xzy.jpg'></img>} />
         </Routes>
       </BrowserRouter>
     </ContextProvider>
