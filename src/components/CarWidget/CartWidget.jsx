@@ -1,10 +1,16 @@
 import { IoCartOutline } from "react-icons/io5";
 import './CartWidget.css';
+import { useAppContext } from "../../context/context";
 
 function CartWidget() {
 
+    const { cantidadItems, precioItems } = useAppContext();
+
     return (
-        <p><IoCartOutline />(3)</p>
+        <>
+            <p><IoCartOutline />{cantidadItems}</p>
+            <p>{precioItems}</p>
+        </>
     );
 };
 

@@ -3,28 +3,29 @@ import CartWidget from '../CarWidget/CartWidget.jsx';
 import './Navbar.css';
 
 
+
 function Navbar() {
 
   return (
 
     <header>
       <nav className='navBar'>
-        <ul className='navBarItems'>          
+        <ul className='navBarItems'>
           <Link to="/">
             <li> Inicio</li>
           </Link>
-          <Link to="/categoria/computadora">
-            <li> Computadores</li>
-          </Link> 
-          <Link to="/categoria/celular">
-            <li> Celular</li>
-          </Link>           
-          
+          <Link to="/categoria/Calzado">
+            <li>Calzado</li>
+          </Link>
+          <Link to="/categoria/Indumentaria">
+            <li>Indumentaria</li>
+          </Link>
+
         </ul>
         <Link to="/carrito">
           <CartWidget />
         </Link>
-        
+
       </nav>
     </header>
 

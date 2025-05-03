@@ -2,30 +2,27 @@ import { useEffect, useState } from 'react';
 import './ItemListContainer.css';
 import Item from '../Item/Item';
 import Loader from '../Loader/Loader';
-import { fetchData } from '../../fetchData';
 import { useParams } from 'react-router';
+import { useAppContext } from '../../context/context';
+
 
 function ItemListContainer() {
 
   const [loading, setLoading] = useState(true);
-  const [todosLosProductos, setTodosLosProductos] = useState(null);
-  
-  const {categoria} = useParams();
- 
+  const { productos } = useAppContext();
+  const { categoria } = useParams();
+
+
 
   useEffect(() => {
-    if (!todosLosProductos) {
-      console.log("Trayendo productos");
-      fetchData()
-      .then(response => {
-        setTodosLosProductos(response);
-        setTimeout(() => {
-          setLoading(false);
-        }, 500);
-    })
-    .catch(err => console.error(err));
-  } 
-}, [categoria]);
+
+    if (productos.length > 0) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
+    }
+
+  }, [productos, categoria]);
 
   return (
 
@@ -36,38 +33,27 @@ function ItemListContainer() {
       :
 
       <div >
-         <div  className="container">  {/*container-productos */}
+        <div className="container">
           {
-            categoria? 
+            categoria ?
 
-            todosLosProductos.filter (el => el.categoria === categoria).map(el => {
-              return (
-                <Item key={el.id} producto={el} />
-              );
-            })
+              productos.filter(el => el.categoria === categoria).map(el => {
+                return (
+                  <Item key={el.id} producto={el} />
+                );
+              })
 
-          :
-          todosLosProductos.map(el => {
-            return (
-              <Item key = {el.id} producto={el} />
-            );
-          })}       
+              :
+              productos.map(el => {
+                return (
+                  <Item key={el.id} producto={el} />
+                );
+              })}
 
-        </div>       
+        </div>
       </div>
   );
 };
 
 export default ItemListContainer;
 
-
-
-// {
-//   productoFiltrado ? <ItemDetail producto={productoFiltrado} volverAlInicio={() => setProductoFiltrado(null)} />
-//     :
-//     todosLosProductos.map(el => {
-//       return (
-//         <Item key={el.id} producto={el} filtrarProducto={setProductoFiltrado} />
-//       );
-//     })
-// }

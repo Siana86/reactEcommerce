@@ -1,0 +1,9 @@
+.card {
+    width: 30%;
+    gap: .625rem;
+    margin: .625rem;
+}
+
+.card img {
+    width: 100%;
+}
